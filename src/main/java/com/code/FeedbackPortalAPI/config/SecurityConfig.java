@@ -16,7 +16,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                 // allowed to access the register and login
-                        .requestMatchers("/auth/register", "/auth/login").permitAll()
+                        .requestMatchers("/auth/register", "/auth/login", "/").permitAll()
                         .anyRequest().authenticated()
                 );
 
