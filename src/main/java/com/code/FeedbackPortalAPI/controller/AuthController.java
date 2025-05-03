@@ -1,21 +1,25 @@
 package com.code.FeedbackPortalAPI.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.code.FeedbackPortalAPI.dto.*;
+import com.code.FeedbackPortalAPI.service.AuthService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
-    @GetMapping("/register")
-    public String register() {
-        return "Register success";
+
+    private final AuthService authService;
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody RegistrationRequest request) {
+        return ResponseEntity.ok(authService.registerUser(request));
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "Login success";
+    @PostMapping("/generateToken")
+    public ResponseEntity<?> generateToken(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.authenticate(request));
     }
-
-
 }

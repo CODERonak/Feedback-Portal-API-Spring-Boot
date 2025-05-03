@@ -1,10 +1,12 @@
 package com.code.FeedbackPortalAPI.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-// DTO for registration request
 @Data
-public class RegistrationRequest {
+@AllArgsConstructor
+public class AuthResponse {
+    private String token;
     private String username;
     private String password;
 }
