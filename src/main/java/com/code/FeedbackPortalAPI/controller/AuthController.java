@@ -18,7 +18,7 @@ public class AuthController {
         return ResponseEntity.ok(authService.registerUser(request));
     }
 
-    @PostMapping("/generateToken")
+    @PostMapping("/login")
     public ResponseEntity<?> generateToken(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.authenticate(request));
     }

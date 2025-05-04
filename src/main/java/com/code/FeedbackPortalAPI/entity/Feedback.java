@@ -17,7 +17,4 @@ public class Feedback {
     private Long id;
     private String title;
     private String content;
-    private String status;
-    @ManyToOne
-    private Users users;
 }

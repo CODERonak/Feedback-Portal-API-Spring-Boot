@@ -31,6 +31,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // allowed to access the register and login
                         .requestMatchers("/auth/**", "/", "/h2-console/**").permitAll()
+                        .requestMatchers("/feedback/add").hasRole("USER")
+                        .requestMatchers("/feedback/all").permitAll()
                         .anyRequest().authenticated())
 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
