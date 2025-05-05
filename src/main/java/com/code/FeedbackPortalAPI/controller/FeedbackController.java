@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,4 +35,17 @@ public class FeedbackController {
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         return ResponseEntity.ok(feedbackService.getAllFeedbacks());
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateFeedback(@PathVariable int id, @RequestBody Feedback feedback) {
+        feedbackService.updateFeedback(id, feedback);
+        return ResponseEntity.status(HttpStatus.OK).body("Feedback updated");
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteFeedback(@PathVariable int id) {
+        feedbackService.deleteFeedback(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Feedback deleted");
+    }
+
 }

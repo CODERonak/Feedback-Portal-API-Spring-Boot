@@ -31,7 +31,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // allowed to access the register and login
                         .requestMatchers("/auth/**", "/", "/h2-console/**").permitAll()
+                        // for user
                         .requestMatchers("/feedback/add").hasRole("USER")
+                        // for the public viewing
                         .requestMatchers("/feedback/all").permitAll()
                         .anyRequest().authenticated())
 

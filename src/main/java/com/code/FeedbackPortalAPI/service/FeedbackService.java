@@ -23,4 +23,16 @@ public class FeedbackService {
     public List<Feedback> getAllFeedbacks() {
         return feedbackRepository.findAll();
     }
+
+    // getting feedback by id
+    public Feedback updateFeedback(int id, Feedback feedback) {
+        feedback.setId(id);
+        return feedbackRepository.save(feedback);
+    }
+
+    // deleting feedback by id
+    public void deleteFeedback(int id) {
+        feedbackRepository.deleteById(id);
+    }
+
 }
