@@ -1,4 +1,7 @@
-Going to build the Feedback Portal API for two purposes
+Done with the building of Feedback Portal API
+
+Two Major Purpose:
+
 1. Enhancing the Spring security and spring boot skills
 2. To implement the JWT authentication
 
